@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // primero creamos una funcion que devuelva una promesa
+
+
+    function get_ubicacion (){
+      return new Promise(function (todoOk, algunError){
+        // aqui se escribe el codigo de la promesa construida
+        navigator.geolocation.getCurrentPosition(function(datos){
+          todoOk(datos)
+        });
+      });
+    }
+    
+  </script>
+</body>
+</html>
