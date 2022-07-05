@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  .container {
+    display: flex;
+    margin: auto 0;
+  }
+
+  .primero, .segundo {
+    width: 30%;
+    min-height: 200px;
+    padding: 10px;
+    border: 5px solid blueviolet;
+    border-radius: 15px;
+    margin-right: 30px;
+  }
+
+  button{
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 7px;
+    background-color: rgb(200, 126, 166);
+    border-radius: 12px;
+    border: none;
+    color: white;    
+  }
+</style>
+
+<body>
+  <h1>Batalla de GitHub</h1>
+
+  <div class="container">
+    <div class="primero">
+      <h3 id="div1"></h3>
+      <label>Usuario: </label>
+      <input type="text" id="name_one">
+      <br><br>
+      <p>Public Repositories: <span class="public_repos"></span></p>
+      <p>Number of followers:<span class="followers"></span></p>
+      <p>Number following:<span class="following"></span></p>
+      <p>Public Gists:<span class="public_gists"></span></p>
+      <p>Total Score => <span class="total"></span></p>
+
+    </div>
+
+    <div class="segundo">
+      <h3 id="div2"></h3>
+      <label>Usuario: </label>
+      <input type="text" id="name_two">
+      <br><br>
+      <p>Public Repositories: <span class="public_repos"></span></p>
+      <p>Number of followers:<span class="followers"></span></p>
+      <p>Number following:<span class="following"></span></p>
+      <p>Public Gists:<span class="public_gists"></span></p>
+      <p>Total Score => <span class="total"></span></p>
+
+  
+
+    </div>
+  </div>
+  <button> BATTLE</button>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script>
+
+    const saludoUsuario = document.querySelector('div1')
+    const nameOne = document.querySelector('#name_one')
+    const nameTwo = document.querySelector('#name_two')
+    const uno = document.querySelector('.primero .public_repos')
+    const dos = document.querySelector('.primero .followers')
+    const tres = document.querySelector('.primero .following')
+    const cuatro = document.querySelector('.primero .public_gists')
+    const total = document.querySelector('.primero .total')
+
+    const uno1 = document.querySelector('.segundo .public_repos')
+    const dos2 = document.querySelector('.segundo .followers')
+    const tres3 = document.querySelector('.segundo .following')
+    const cuatro4 = document.querySelector('.segundo .public_gists')
+    const total5 = document.querySelector('.segundo .total')
+
+
+    let usuario;
+
+
+    nameOne.addEventListener('keyup', function (ev) {
+      if (ev.keyCode == 13) {  // si usuario ingresa Enter capturo el texto del input
+        usuario = nameOne.value.trim();
+        //console.log(usuario)
+        $.getJSON(`https://api.github.com/users/${usuario}`, function (datos) {
+          console.log(datos)
+          div1.innerHTML = 'Hola! ' + datos.name;
+
+          uno.innerHTML = datos.public_repos
+          dos.innerHTML = datos.followers
+          tres.innerHTML = datos.following
+          cuatro.innerHTML = datos.public_gists
+          total.innerHTML = datos.public_repos + datos.followers + datos.following + datos.public_gists
+
+
+        }).fail(function(error){
+          alert('Este usuario no existe')
+        })
+
+      }
+    })
+
+    nameTwo.addEventListener('keyup', function (ev) {
+      if (ev.keyCode == 13) {  // si usuario ingresa Enter capturo el texto del input
+        usuario = nameTwo.value
+        //console.log(usuario)
+
+
+        $.getJSON(`https://api.github.com/users/${usuario}`, function (datos) {
+          console.log(datos)
+        div2.innerHTML = 'Hola! ' + datos.name
+        uno1.innerHTML = datos.public_repos
+        dos2.innerHTML = datos.followers
+        tres3.innerHTML = datos.following
+        cuatro4.innerHTML = datos.public_gists
+        total5.innerHTML = datos.public_repos + datos.followers + datos.following + datos.public_gists
+
+        }).fail(function(error){
+          alert('Este usuario no existe')
+        })
+
+      }
+    })
+  </script>
+  </script>
+</body>
+
+</html>
