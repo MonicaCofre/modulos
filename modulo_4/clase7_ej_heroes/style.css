@@ -1,0 +1,24 @@
+body{
+  padding: 10px;
+}
+
+.navbar-black span{
+  font-size: 30px;
+}
+.imgNavbar{
+  width: 50px;
+}
+.imgNavbar img{
+  width: 100%;
+  display: block;
+}
+.card{
+  margin: auto 0;
+}
+
+
+.navbar-black span {
+  color: white;
+}
+
+
