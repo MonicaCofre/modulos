@@ -1,0 +1,11 @@
+{
+  "name": "ej_archivos",
+  "version": "1.0.0",
+  "description": "uso de file system",
+  "main": "archivos.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MCV",
+  "license": "ISC"
+}
