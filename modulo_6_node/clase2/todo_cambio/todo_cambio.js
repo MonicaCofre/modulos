@@ -22,7 +22,7 @@ async function getDatos(nombre_text, nombre_ext, tipo_cambio, cantidad){
   //const dolarActual = res.data.dolar.valor  
   //const cantidad = 250000
   const tipo_valor = res.data[tipo_cambio].valor
-  console.log(tipo_valor) // 941.03
+  console.log(tipo_valor) // para dolar es de 941.03
   
   if(tipo_cambio == 'bitcoin'){
     const resultado = (cantidad*tipo_valor)*res.data.dolar.valor
@@ -38,7 +38,7 @@ async function getDatos(nombre_text, nombre_ext, tipo_cambio, cantidad){
   Convertido a ${tipo_cambio} da un total de:
   $${total}.- `
 
-  function escribir(frase){
+  function escribir(){
     fs.writeFile(`${nombre_text}.${nombre_ext}`, frase,'utf-8', function(){
       setTimeout(()=> { leer()}, 2000)
     })
@@ -50,6 +50,6 @@ async function getDatos(nombre_text, nombre_ext, tipo_cambio, cantidad){
   }
   //console.log('dolar ', res.data.dolar.valor)
   //console.log(frase);
-  escribir(frase)
+  escribir()
 }
 getDatos(nombre_text, nombre_ext, tipo_cambio, cantidad);
